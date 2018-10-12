@@ -10,8 +10,10 @@ def data_import():
     compressedData = data.groupby('id_player').mean()
     compressedData = (compressedData-compressedData.min())/(compressedData.max()-compressedData.min())
     compressedData['id_game'] = data['id_game']
-    compressedData['count'] = data.groupby(['id_player']).count()['id_game']
-
+    # compressedData['count'] = data.groupby(['id_player']).count()['id_game']
+    # compressedData.drop(['count'])
+    # compressedData.drop(columns=['id_game'])
+    del compressedData['id_game']
     return compressedData
 
 

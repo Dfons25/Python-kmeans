@@ -6,7 +6,7 @@ class Cluster(object):
     meanAssists = 0
     meanFouls = 0
     meanBlocks = 0
-    fieldnames = ["id_game", "twoPoints", "threePoints", "assists", "fouls", "blocks", "count"]
+    fieldnames = ["twoPoints", "threePoints", "assists", "fouls", "blocks"]
     members = pandas.DataFrame(columns=fieldnames)
 
     def __init__(self, meanTwoPoints, meanThreePoints, meanAssists, meanFouls, meanBlocks):
@@ -39,6 +39,18 @@ class Cluster(object):
 
     def get_average(self):
         return self.members.mean()
+
+    def get_centroid_info(self):
+        info = self.members
+        values = [self.meanTwoPoints, self.meanThreePoints, self.meanAssists, self.meanFouls, 2]
+        position = len(info.index) + 1
+        info.loc[position] = values
+        # info['twoPoints'] = self.meanTwoPoints
+        # info['threePoints'] = self.meanThreePoints
+        # info['assists'] = self.meanAssists
+        # info['fouls'] = self.meanFouls
+        # info['blocks'] = self.meanBlocks
+        return info.loc[position]
 
 
 def new_cluster(obj):

@@ -1,12 +1,15 @@
-import importer, math
+import importer, math, pandas
 from Cluster import Cluster, new_cluster
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+
 
 data = importer.data_import()
 
 clusterNumber = 3
-maxIterations = 10
+maxIterations = 40
 prevError = 0
-deltaError = 0.001
+deltaError = 0.0001
 iterationError = 0
 clusterList = []
 
@@ -62,16 +65,37 @@ def calculateError(clusterList):
     return sumDistance
 
 countIterations = 0
-
 newClusterList = []
 
 while True:
     newClusterList = assignToClosestCluster(data, clusterList)
     newClusterList = recalculateCentroids(newClusterList)
     iterationError = calculateError(newClusterList)
+    countIterations += 1
     if countIterations < maxIterations and math.fabs(prevError - iterationError) > deltaError:
         break
 
+colors = ['red', 'blue', 'green']
+colorIndex = 0
 
 for x in newClusterList:
-    x.print_members()
+    # x.print_members()
+    extra = x.get_centroid_info()
+    print(extra)
+    print(extra.name)
+    # x.members.append(extra)
+    # x.members = x.members.append(extra)[extra.columns.tolist()]
+    # print(x.members)
+    tsne = TSNE(n_components=2, random_state=0)
+    data = tsne.fit_transform(x.members)
+    # print(data[extra.name - 1])
+    # centroid = tsne.fit_transform(x.get_centroid_info())
+    # print(centroid)
+    # plt.plot(data[extra.name - 1][0], data[extra.name - 1][1], 's', label="marker='{0}'".format('s'))
+
+    for x, y in data:
+        plt.scatter(x,y, color=colors[colorIndex])
+
+    colorIndex+=1
+
+plt.show()
