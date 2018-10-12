@@ -4,6 +4,10 @@ from Cluster import Cluster, new_cluster
 data = importer.data_import()
 
 clusterNumber = 3
+maxIterations = 10
+prevError = 0
+deltaError = 0.001
+iterationError = 0
 clusterList = []
 
 for x in range(0,clusterNumber):
@@ -42,7 +46,32 @@ def assignToClosestCluster(data, clusterList):
 
     return clusterList
 
-newClusterList = assignToClosestCluster(data, clusterList)
+def recalculateCentroids(clusterList):
+    for cluster in clusterList:
+        cluster.editCluster(cluster.get_average())
+
+    return clusterList
+
+def calculateError(clusterList):
+    sumDistance = 0.0
+
+    for cluster in clusterList:
+        for index, member in data.iterrows():
+            sumDistance += calculateDistance(cluster, member) ** 2
+
+    return sumDistance
+
+countIterations = 0
+
+newClusterList = []
+
+while True:
+    newClusterList = assignToClosestCluster(data, clusterList)
+    newClusterList = recalculateCentroids(newClusterList)
+    iterationError = calculateError(newClusterList)
+    if countIterations < maxIterations and math.fabs(prevError - iterationError) > deltaError:
+        break
+
 
 for x in newClusterList:
     x.print_members()

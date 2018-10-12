@@ -23,12 +23,22 @@ class Cluster(object):
     def reset_members(self):
         self.members.iloc[0:0]
 
+    def editCluster(self, obj):
+        self.meanTwoPoints = obj['twoPoints']
+        self.meanThreePoints = obj['threePoints']
+        self.meanAssists = obj['assists']
+        self.meanFouls = obj['fouls']
+        self.meanBlocks = obj['blocks']
+
     def print_cluster(self):
         print("{0:.2f} \t {0:.2f} \t {0:.2f} \t {0:.2f} \t {0:.2f}".format(self.meanTwoPoints.values[0], self.meanThreePoints.values[0], self.meanAssists.values[0],
               self.meanFouls.values[0], self.meanBlocks.values[0]))
 
     def print_members(self):
         print(self.members)
+
+    def get_average(self):
+        return self.members.mean()
 
 
 def new_cluster(obj):
