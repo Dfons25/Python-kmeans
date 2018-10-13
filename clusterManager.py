@@ -2,14 +2,15 @@ import importer, math, pandas
 from Cluster import Cluster, new_cluster
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA as sklearnPCA
 
 
 data = importer.data_import()
 
 clusterNumber = 3
-maxIterations = 40
-prevError = 0
-deltaError = 0.0001
+maxIterations = 30
+prevError = 1
+deltaError = 0.001
 iterationError = 0
 clusterList = []
 
@@ -33,6 +34,7 @@ def assignToClosestCluster(data, clusterList):
 
     for cluster in clusterList:
         cluster.reset_members()
+        # cluster.print_members()
 
     for index, member in data.iterrows():
 
@@ -72,30 +74,46 @@ while True:
     newClusterList = recalculateCentroids(newClusterList)
     iterationError = calculateError(newClusterList)
     countIterations += 1
-    if countIterations < maxIterations and math.fabs(prevError - iterationError) > deltaError:
+    print(countIterations)
+    if countIterations > maxIterations or math.fabs(prevError - iterationError) < deltaError:
         break
 
-colors = ['red', 'blue', 'green']
+colors = ['red', 'blue', 'green', 'purple', 'pink', 'gray', 'olive']
 colorIndex = 0
+mergedMembers = []
 
 for x in newClusterList:
-    # x.print_members()
-    extra = x.get_centroid_info()
-    print(extra)
-    print(extra.name)
-    # x.members.append(extra)
-    # x.members = x.members.append(extra)[extra.columns.tolist()]
-    # print(x.members)
-    tsne = TSNE(n_components=2, random_state=0)
-    data = tsne.fit_transform(x.members)
-    # print(data[extra.name - 1])
-    # centroid = tsne.fit_transform(x.get_centroid_info())
-    # print(centroid)
-    # plt.plot(data[extra.name - 1][0], data[extra.name - 1][1], 's', label="marker='{0}'".format('s'))
 
-    for x, y in data:
-        plt.scatter(x,y, color=colors[colorIndex])
+    x.members.loc[:, 'idf'] = colorIndex
 
-    colorIndex+=1
+    # extra = x.get_centroid_info()
+    # x.members.loc[len(x.members.index) + 1] = extra
+
+    mergedMembers.append(x.members)
+    colorIndex += 1
+
+
+result = pandas.concat(mergedMembers)
+print(result)
+
+ids = result['idf']
+# print(ids)
+
+pca = sklearnPCA(n_components=2)  # 2-dimensional PCA
+
+data = pandas.DataFrame(pca.fit_transform(result))
+
+data = data.reset_index(drop=True)
+ids = ids.reset_index(drop=True)
+data = data.join(ids)
+
+for index, row in data.iterrows():
+    print(row)
+    if int(row[2]) == 55:
+        plt.scatter(row[0],row[1], marker='s', color='orange')
+    else:
+        plt.scatter(row[0],row[1], color=colors[int(row[2])])
+    #
+    #
 
 plt.show()

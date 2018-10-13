@@ -1,4 +1,4 @@
-import pandas
+import pandas, copy
 
 class Cluster(object):
     meanTwoPoints = 0
@@ -21,7 +21,8 @@ class Cluster(object):
         self.members = self.members.append(obj)
 
     def reset_members(self):
-        self.members.iloc[0:0]
+        self.members = self.members.iloc[0:0]
+        # self.print_members()
 
     def editCluster(self, obj):
         self.meanTwoPoints = obj['twoPoints']
@@ -41,15 +42,10 @@ class Cluster(object):
         return self.members.mean()
 
     def get_centroid_info(self):
-        info = self.members
-        values = [self.meanTwoPoints, self.meanThreePoints, self.meanAssists, self.meanFouls, 2]
+        info = copy.copy(self.members)
+        values = [self.meanTwoPoints, self.meanThreePoints, self.meanAssists, self.meanFouls, self.meanBlocks, int(55)]
         position = len(info.index) + 1
         info.loc[position] = values
-        # info['twoPoints'] = self.meanTwoPoints
-        # info['threePoints'] = self.meanThreePoints
-        # info['assists'] = self.meanAssists
-        # info['fouls'] = self.meanFouls
-        # info['blocks'] = self.meanBlocks
         return info.loc[position]
 
 

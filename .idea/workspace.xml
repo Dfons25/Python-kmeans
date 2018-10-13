@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cluster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clusterManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/clusterManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/importer.py" beforeDir="false" afterPath="$PROJECT_DIR$/importer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +57,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="18" />
-          <entry key="py" value="1529" />
+          <entry key="py" value="2555" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1547" />
+          <entry key="Python" value="2573" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -96,14 +95,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/clusterManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="-206">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <marker date="1539369999990" expanded="true" signature="482:483" ph="..." />
-                <marker date="1539369999990" expanded="true" signature="482:852" ph="..." />
-                <marker date="1539369999990" expanded="true" signature="899:990" ph="..." />
-                <marker date="1539369999990" expanded="true" signature="1507:1755" ph="..." />
+                <marker date="1539398924405" expanded="true" signature="533:534" ph="..." />
+                <marker date="1539398924405" expanded="true" signature="533:903" ph="..." />
+                <marker date="1539398924405" expanded="true" signature="950:1075" ph="..." />
+                <marker date="1539398924405" expanded="true" signature="1592:1839" ph="..." />
               </folding>
             </state>
           </provider>
@@ -124,10 +123,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+            <state relative-caret-position="134">
+              <caret line="45" column="117" selection-start-line="45" selection-start-column="117" selection-end-line="45" selection-end-column="117" />
               <folding>
-                <marker date="1539367919180" expanded="true" signature="796:1018" ph="..." />
+                <marker date="1539392401452" expanded="true" signature="848:1070" ph="..." />
               </folding>
             </state>
           </provider>
@@ -323,8 +322,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.clusterManager" />
-        <item itemvalue="Python.teste" />
         <item itemvalue="Python.Cluster" />
+        <item itemvalue="Python.teste" />
         <item itemvalue="Python.importer" />
       </list>
     </recent_temporary>
@@ -360,7 +359,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.52124184" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33660132" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -447,24 +446,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Cluster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        <state relative-caret-position="134">
+          <caret line="45" column="117" selection-start-line="45" selection-start-column="117" selection-end-line="45" selection-end-column="117" />
           <folding>
-            <marker date="1539367919180" expanded="true" signature="796:1018" ph="..." />
+            <marker date="1539392401452" expanded="true" signature="848:1070" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/clusterManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="-206">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1539369999990" expanded="true" signature="482:483" ph="..." />
-            <marker date="1539369999990" expanded="true" signature="482:852" ph="..." />
-            <marker date="1539369999990" expanded="true" signature="899:990" ph="..." />
-            <marker date="1539369999990" expanded="true" signature="1507:1755" ph="..." />
+            <marker date="1539398924405" expanded="true" signature="533:534" ph="..." />
+            <marker date="1539398924405" expanded="true" signature="533:903" ph="..." />
+            <marker date="1539398924405" expanded="true" signature="950:1075" ph="..." />
+            <marker date="1539398924405" expanded="true" signature="1592:1839" ph="..." />
           </folding>
         </state>
       </provider>
