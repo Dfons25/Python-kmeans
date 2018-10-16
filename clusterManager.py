@@ -17,6 +17,12 @@ clusterList = []
 for x in range(0,clusterNumber):
     cluster = new_cluster(data.sample(1))
     clusterList.append(cluster)
+# cluster = new_cluster(data.loc[[10]])
+# clusterList.append(cluster)
+# cluster = new_cluster(data.loc[[202]])
+# clusterList.append(cluster)
+# cluster = new_cluster(data.loc[[31]])
+# clusterList.append(cluster)
 
 for clusters in clusterList:
     clusters.print_cluster()
@@ -85,7 +91,7 @@ mergedMembers = []
 for x in newClusterList:
 
     x.members.loc[:, 'idf'] = colorIndex
-
+    x.print_members()
     # extra = x.get_centroid_info()
     # x.members.loc[len(x.members.index) + 1] = extra
 
@@ -108,7 +114,7 @@ ids = ids.reset_index(drop=True)
 data = data.join(ids)
 
 for index, row in data.iterrows():
-    print(row)
+    # print(row)
     if int(row[2]) == 55:
         plt.scatter(row[0],row[1], marker='s', color='orange')
     else:
