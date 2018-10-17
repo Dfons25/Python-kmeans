@@ -4,17 +4,19 @@ import pandas
 
 def data_import():
 
-    fieldnames = ["id_player","id_game","twoPoints","threePoints","assists","fouls","blocks"]
-    data = pandas.read_csv('resources/games.csv', sep = ';', header = None, names=fieldnames)
+    fieldnames_games = ["id_player","id_game","twoPoints","threePoints","assists","fouls","blocks"]
+    fieldnames_players = ["id_player","p_name","team","date","sex"]
 
-    compressedData = data.groupby('id_player').mean()
-    compressedData = (compressedData-compressedData.min())/(compressedData.max()-compressedData.min())
-    compressedData['id_game'] = data['id_game']
-    # compressedData['count'] = data.groupby(['id_player']).count()['id_game']
-    # compressedData.drop(['count'])
-    # compressedData.drop(columns=['id_game'])
-    del compressedData['id_game']
-    return compressedData
+    data_g = pandas.read_csv('resources/games.csv', sep = ';', header = None, names=fieldnames_games)
+
+    data_p = pandas.read_csv('resources/players.csv', sep = ';', header = None, names=fieldnames_players)
+
+    compressedGames = data_g.groupby('id_player').mean()
+    compressedGames = (compressedGames-compressedGames.min())/(compressedGames.max()-compressedGames.min())
+    compressedGames['id_game'] = data_g['id_game']
+
+    del compressedGames['id_game']
+    return compressedGames, data_p
 
 
 

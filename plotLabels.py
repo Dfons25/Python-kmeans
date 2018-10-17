@@ -1,18 +1,8 @@
 import matplotlib.pyplot as plt
-import numpy as np; np.random.seed(1)
-
-x = np.random.rand(15)
-y = np.random.rand(15)
-names = np.array(list("ABCDEFGHIJKLMNO"))
-c = np.random.randint(1,5,size=15)
-print(x)
-norm = plt.Normalize(1,4)
-cmap = plt.cm.RdYlGn
 
 fig,ax = plt.subplots()
-sc = plt.scatter(x,y,c=c, s=100, cmap=cmap, norm=norm)
 
-annot = ax.annotate("teste", xy=(0,0), xytext=(20,20),textcoords="offset points",
+annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
 annot.set_visible(False)
@@ -31,9 +21,7 @@ def update_annot(ind):
 def hover(event):
     vis = annot.get_visible()
     if event.inaxes == ax:
-        # print('here')
         cont, ind = sc.contains(event)
-        print(ind)
         if cont:
             update_annot(ind)
             annot.set_visible(True)
@@ -44,5 +32,3 @@ def hover(event):
                 fig.canvas.draw_idle()
 
 fig.canvas.mpl_connect("motion_notify_event", hover)
-
-plt.show()
