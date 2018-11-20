@@ -1,5 +1,8 @@
 # Python-kmeans
 
+:fire:
+:collision:
+
 ** Missplaced players ** 
 
 2    0.925116  0.042050    0
