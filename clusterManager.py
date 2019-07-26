@@ -22,6 +22,8 @@ for _ in range(clusterNumber):
     cluster = new_cluster(data.sample())
     clusterList.append(cluster)
 
+# fixed initial centroids for easy debugging
+
 # cluster = new_cluster(data.loc[[10]])
 # clusterList.append(cluster)
 # cluster = new_cluster(data.loc[[202]])
@@ -32,13 +34,16 @@ for _ in range(clusterNumber):
 assignToClosestCluster(data, clusterList)
 
 countIterations = 0
-newClusterList = []
 
 while True:
-    newClusterList = assignToClosestCluster(data, clusterList)
-    newClusterList = recalculateCentroids(newClusterList)
-    iterationError = calculateError(data, newClusterList)
+    closestClusterList = assignToClosestCluster(data, clusterList)
+
+    recalculatedCentroidsList = recalculateCentroids(closestClusterList)
+
+    iterationError = calculateError(data, recalculatedCentroidsList)
+
     countIterations += 1
+
     if countIterations > maxIterations or math.fabs(prevError - iterationError) < deltaError:
         break
 
@@ -48,7 +53,7 @@ while True:
 
 mergedMembers = []
 
-for x in newClusterList:
+for x in recalculatedCentroidsList:
 
     x.members['idf'] = colorIndex
     x.print_members()
